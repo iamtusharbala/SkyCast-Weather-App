@@ -47,7 +47,7 @@
                     <% } else if (weather) { %>
                         <div class="weather-card my-5">
                             <div class="card p-3 mx-auto">
-                                <div class="row">
+                                <div class="row g-0">
                                     <div class="col-lg-8">
                                         <div class="row g-0">
                                             <div class="col-md-4">
@@ -71,6 +71,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row m-0">
+                                    <p class="card-subtext">Feels like <b>
+                                            <%= Math.trunc(weather.main.feels_like) %>&deg;C
+                                        </b></p>
                                 </div>
                             </div>
                         </div>
