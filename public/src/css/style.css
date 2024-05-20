@@ -1,0 +1,126 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900 */
+/* primary-color : #0097B2 
+secondary-color: #FF914D; */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+html,
+.wrapper,
+.footer {
+    background-color: #EAEAEA;
+}
+
+:root {
+    --bs-primary: #0097B2;
+    --bs-secondary: #FF914D
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+}
+
+.card {
+    --bs-card-bg: var(--bs-primary);
+    --bs-card-cap-bg: var(--bs-primary);
+    background-color: var(--bs-primary);
+    --bs-card-border-color: none;
+    width: 40rem;
+    --bs-card-spacer-x: 0
+}
+
+
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.navbar {
+    background-color: #eaeaea !important;
+}
+
+.navbar-brand {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2rem;
+    color: var(--bs-primary);
+}
+
+.navbar .navbar-nav img {
+    width: 2rem;
+}
+
+.footer {
+    border-top: 1px solid #e9ecef;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.openweather p {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.row {
+    justify-content: space-around;
+}
+
+.card-title,
+.card-text {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #fff;
+}
+
+.card-title {
+    font-size: 3.75rem;
+}
+
+.card-text {
+    font-size: 1.75rem;
+}
+
+.card-subtext {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-style: light;
+    color: #fff;
+}
+
+.openweather a {
+    color: var(--bs-secondary);
+    font-weight: 600;
+}
+
+.footer-logo img {
+    width: 3rem;
+    cursor: pointer;
+}
+
+.footer {
+    color: #000;
+    font-size: 1.25rem;
+}

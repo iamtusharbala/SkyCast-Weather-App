@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast Weather | tbk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/src/css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-lg-5" href="#">SkyCast</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 me-5 mb-lg-0">
+                        <img src="/src/tbk-logo-black.png" alt="tbk logo" srcset="">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container main my-4">
+                <form action="/weather" method="get">
+                    <div class="input-group md-w-50 mx-auto my-5">
+                        <input type="text" class="form-control lg-60" placeholder="Enter City" name="city" id="name">
+                        <button class="btn btn-primary" type="submit" value="Submit">Search</button>
+                    </div>
+                </form>
+
+                <% if (error) { %>
+                    <p class="error">
+                        <%= error %>
+                    </p>
+                    <% } else if (weather) { %>
+                        <div class="weather-card my-5">
+                            <div class="card p-3 mx-auto">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img src="http://openweathermap.org/img/w/<%= weather.weather[0].icon %>.png"
+                                                    alt="...">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <p class="card-title m-0">
+                                                        <%= Math.trunc(weather.main.temp )%>&deg;C
+                                                    </p>
+                                                    <p class="card-text m-0">
+                                                        <%= weather.name %>, <%=weather.sys.country%>
+                                                    </p>
+                                                    <p class="card-subtext m-0">
+                                                        <i class="fa-solid fa-droplet"></i>
+                                                        <%= weather.main.humidity %>% |
+                                                            <%= weather.weather[0].description %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                            <div class="openweather text-center">
+                                <p>Made from <a href=" https://openweathermap.org/" target="_blank"
+                                        rel="noopener noreferrer">
+                                        OpenWeatherMap API</a> ❤️</p>
+                            </div>
+            </div>
+
+
+        </div>
+
+        <!-- Footer -->
+        <section class="footer">
+            <div class="container">
+                <footer class="py-3 border-top">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mb-3 footer-logo">
+                            <a href="#"><img src="/src/tbk-logo-black.png" alt="tbk logo"></a>
+                        </div>
+                        <div class="mb-3 text-center made-love ml-lg-5">Made with ❤️ in Kochi. </div>
+                        <div class="mb-3">Developed by <a href="https://iamtusharbala.netlify.app/" target="_blank"
+                                rel="noopener noreferrer"><b>Tushar Balakrishnan V</b></a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
