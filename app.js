@@ -3,15 +3,15 @@ const app = express()
 const path = require('path')
 const axios = require('axios')
 const dotenv = require('dotenv')
-const { error } = require('console')
 const helmet = require('helmet');
+
+const { expressCspHeader } = require('express-csp-header');
 
 
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(helmet())
 
 // Setting views directory
 app.set('views', path.join(__dirname, 'views'))
@@ -23,6 +23,16 @@ app.use(express.json())
 // Setting .env file
 dotenv.config({ path: 'config.env' })
 
+app.use(helmet())
+
+app.use(expressCspHeader({
+    policies: {
+        policies: {
+            'default-src': [expressCspHeader.NONE],
+            'img-src': [expressCspHeader.SELF],
+        }
+    }
+}));
 
 app.get('/', (req, res) => {
     res.render('index', { weather: null, error: null })
@@ -38,6 +48,7 @@ app.get('/weather', async (req, res) => {
         const completeURL = `${process.env.BASE_SEARCH_URL}${city}&appid=${process.env.API_KEY}&units=metric`;
         const response = await axios.get(completeURL);
         weather = response.data
+        console.log(weather);
         if (response.data == null) {
             weather = null
             error = 'Data not found'
@@ -46,8 +57,7 @@ app.get('/weather', async (req, res) => {
     } catch (e) {
         if (e.response && e.response.data && e.response.data.cod === '404' && e.response.data.message === 'city not found') {
             console.log('City Not Found');
-            // res.render('index', { error: 'City Not Found' })
-
+            res.render('index', { error: 'City Not Found' })
         } else {
             console.log("Error", e.message);
         }

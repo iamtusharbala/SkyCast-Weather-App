@@ -7,7 +7,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 html,
@@ -76,15 +76,11 @@ html,
 }
 
 
-.openweather p {
-    font-family: "Work Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
+
 
 .row {
     justify-content: space-around;
+    align-items: baseline;
 }
 
 .card-title,
@@ -111,9 +107,21 @@ html,
     color: #fff;
 }
 
+.weather-icon img {
+    width: 12rem;
+}
+
 .openweather a {
     color: var(--bs-secondary);
     font-weight: 600;
+}
+
+.footer .openweather p {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
 }
 
 .footer-logo img {
@@ -130,5 +138,12 @@ html,
     .card {
         width: 100%;
         text-align: center;
+    }
+
+    .footer-div {
+        flex-direction: column;
+        font-size: 1.125rem;
+        align-items: start !important;
+        margin-left: 2rem;
     }
 }
