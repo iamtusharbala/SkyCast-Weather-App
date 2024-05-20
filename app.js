@@ -4,12 +4,14 @@ const path = require('path')
 const axios = require('axios')
 const dotenv = require('dotenv')
 const { error } = require('console')
+const helmet = require('helmet');
 
 
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(helmet())
 
 // Setting views directory
 app.set('views', path.join(__dirname, 'views'))
@@ -20,8 +22,6 @@ app.use(express.json())
 
 // Setting .env file
 dotenv.config({ path: 'config.env' })
-console.log(process.env.API_KEY);
-
 
 
 app.get('/', (req, res) => {
