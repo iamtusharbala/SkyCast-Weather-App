@@ -48,7 +48,7 @@ app.get('/weather', async (req, res) => {
         const completeURL = `${process.env.BASE_SEARCH_URL}${city}&appid=${process.env.API_KEY}&units=metric`;
         const response = await axios.get(completeURL);
         weather = response.data
-        console.log(weather);
+        // console.log(weather);
         if (response.data == null) {
             weather = null
             error = 'Data not found'
